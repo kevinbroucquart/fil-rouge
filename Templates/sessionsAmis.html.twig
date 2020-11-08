@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	SESSIONS ENTRE AMIS
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/allSessions.css') }}"/>
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h2>Sessions entre amis</h2>
+		<div class="row flex">
+			{% for ami in amis %}
+				<div class=" col-xs-12 col-sm-6 col-md-4">
+					<div class="card mb-3" style="max-width: 500px;">
+						<div class="row no-gutters">
+							<div class="col-md-4">
+								<img src="{{ asset('uploads/images/' ~ ami.image) | imagine_filter('echelle') }}" class="card-img" alt="">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title">
+										<a href="{{ path('showSession', {'id':ami.id}) }}">{{ ami.titre }}</a>
+									</h5>
+									<p class="card-text">{{ ami.ville }}</p>
+									<p class="card-text">
+										<small>{{ ami.users|length }} / {{ ami.nbMax }} places restantes</small>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

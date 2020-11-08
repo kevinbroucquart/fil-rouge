@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	AJOUT SESSION
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('css/inscription.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('css/ajoutSession.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+	<div class="row" id="container-registration">
+		<div class="form_wrapper">
+			<div class="form_container">
+				<div class="title_container">
+					<h2>
+						{% if editMode %}
+							Modifiez la session
+						{% else %}
+							Ajoutez une session
+						{% endif %}
+					</h2>
+				</div>
+				<div class="row clearfix">
+
+					<div class="">
+						{{ form_start(form) }}
+						<div class="input_field">
+							<span>
+								<i aria-hidden="true" class="fa fa-user"></i>
+							</span>
+							{{ form_row(form.titre, {'attr': {'placeholder': 'Entrez le titre de la session'}})}}
+						</div>
+						<div class="input_field">
+							<span>
+								<i aria-hidden="true" class="fa fa-lock"></i>
+							</span>
+							{{ form_row(form.description, {'attr': {'placeholder': 'Entrez votre description'}})}}
+						</div>
+						<div class="input_field">
+							<span>
+								<i class="fas fa-images"></i>
+							</span>
+							{{ form_row(form.image)}}
+						</div>
+
+
+						<div class="row clearfix">
+							<div class="col_half nopadding">
+								<div class="input_field">
+									<span>
+										<i class="fas fa-map-marker-alt"></i>
+									</span>
+									{{ form_row(form.adresse, {'attr': {'placeholder': 'Lieu'}})}}
+								</div>
+							</div>
+						</div>
+						<div class="row clearfix">
+							{{ form_row(form.longitude, {'attr': {'placeholder': 'longitude'}})}}
+							{{ form_row(form.latitude, {'attr': {'placeholder': 'latitude'}})}}
+							{{ form_row(form.ville, {'attr': {'placeholder': 'Ville'}})}}
+							<div class="col_half nopadding">
+								<div class="input_field" class="number">
+									<span>
+										<i class="fas fa-sort-numeric-up-alt"></i>
+									</span>
+
+									{{ form_row(form.nbMin, {'attr': {'placeholder': 'Nombre minimum de participants'}})}}
+								</div>
+							</div>
+							<div class="col_half padding_30">
+								<div class="input_field" class="number">
+									<span>
+										<i class="fas fa-sort-numeric-down-alt"></i>
+									</span>
+									{{ form_row(form.nbMax, {'attr': {'placeholder': 'Nombre maximum de participants'}})}}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="input_field">
+						{{ form_row(form.type)}}
+					</div>
+
+					<div class="row clearfix">
+
+
+						<div class="col_half">
+							<div class="input_field">
+								{{ form_row(form.dateStart)}}
+							</div>
+						</div>
+						<div class="col_half">
+							<div class="input_field">
+								{{ form_row(form.dateEnd, {'attr': {'min':'1995-01-01', 'max':'2020-01-01'}})}}
+							</div>
+						</div>
+
+						<div class="col_half">
+							<div class="input_field" id="prix">
+								<span>
+									<i class="fas fa-euro-sign"></i>
+								</span>
+								{{ form_row(form.prix, {'attr': {'placeholder': 'Entrez le prix'}})}}
+							</div>
+						</div>
+					</div>
+					<button type="submit" id="draw">
+						{% if editMode %}
+							Modifier
+						{% else %}
+							Envoyez
+						{% endif %}
+					</button>
+					<div class="triangle"></div>
+					{{ form_end(form)}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% block javascripts %}
+
+	<script src="{{ asset('bundles/button.js') }}"></script>
+	<script src="{{ asset('bundles/adresseapi.js') }}"></script>
+	
+{% endblock %}{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	MES SESSIONS
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/mesSessions.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<section class="offset-md-3 col-xs-12 col-md-6">
+				<div class="table-responsive">
+					<h2>
+						Sessions auxquelles je participe
+					</h2>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col"></th>
+								<th scope="col">Titre</th>
+								<th scope="col" class="">Date</th>
+								<th scope="col">Participants</th>
+								<th scope="col" class="">Voir</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if not users %}
+								<tr>
+									<td colspan="5">Vous n'avez aucune session en cours</td>
+								</tr>
+							{% else %}
+								{% for user in users %}
+									<tr id="session_{{user.id}}">
+										<td><img id="img-session" src="{{ asset('uploads/images/' ~ user.image) | imagine_filter('echelle') }}" alt=""/></td>
+										<td>{{ user.titre }}</td>
+										<td>{{ user.dateStart | date('Y/m/d')}}</td>
+										<td class="">{{ user.nbMin }}
+											/
+											{{ user.nbMax }}</td>
+										<td class="">
+											<a href="{{ path('showSession', {'id':user.id}) }}"><img src="{{ asset('img/see.png') }}"/></a>
+										</td>
+									</tr>
+								{% endfor %}
+							{% endif %}
+						</tbody>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+	<div class="row">
+		<section class="offset-md-3 col-xs-12 col-md-6">
+			<div class="tab table-responsive" id="tab2">
+				<h2>
+					Sessions que j'organise
+				</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col"></th>
+							<th scope="col">Titre</th>
+							<th scope="col" class="text-center">Date</th>
+							<th scope="col">Participants</th>
+							<th scope="col" class="text-center">Modifier</th>
+							<th scope="col" class="text-right">Supprimer</th>
+							<th scope="col" class="text-right">Voir</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if not sessions %}
+							<tr>
+								<td colspan="7">Vous n'avez aucune session en cours</td>
+							</tr>
+						{% else %}
+							{% for session in sessions %}
+								<tr>
+									<td><img src="{{ asset('uploads/images/' ~ session.image) | imagine_filter('echelle') }}" alt=""/></td>
+									<td>{{ session.titre }}</td>
+									<td>{{ session.dateStart | date('Y/m/d')}}</td>
+									<td class="text-center">{{ session.nbMin }}
+										/
+										{{ session.nbMax }}</td>
+									<td class="text-center">
+										<a href="{{ path('modifSession', {'id':session.id}) }}"><img src="{{ asset('img/modif.png') }}"/></a>
+									</td>
+									<td class="text-center">
+										<a href="{{ path('deleteSession', {'id':session.id}) }}"><img src="{{ asset('img/Poubelle.gif') }}"/></a>
+									</td>
+									<td class="text-center">
+										<a href="{{ path('showSession', {'id':session.id}) }}"><img src="{{ asset('img/see.png') }}"/></a>
+									</td>
+								</tr>
+							{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+</div>
+{% endblock %}
