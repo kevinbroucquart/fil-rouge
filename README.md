@@ -2,7 +2,7 @@
 
 Nature du projet : Réaliser une application à l'aide du framwork symfony 4. 
 
-Sujet du projet : Réaliser une application de sessions de sports entre particulier, avec un professionel ou encore un évenement associatif
+Sujet du projet : Réaliser une application de sessions de sport entre particuliers, avec un professionel ou encore un évenement associatif
 
 Organisation: - 3 collaborateurs 
 
@@ -18,10 +18,10 @@ FRONT = HTML/ CSS
               
           
 
-Ma contribution = 
+Mon travail sur le projet = 
 
-1ere partie (conception) : Réalisation de la conception MCD MLD
-2éme partie (mise en place) : Création des entities et des controllers
-3éme partie (controller) : Création du controller des sessions de sport (pour effectuer un CRUD)
-4éme partie (front) : Elaboration des pages des sessions avec les appels d'api
-5éme partie (mise en production) : Mise en production via l'hebergeur LWS avec filezilla
+1ère partie (conception) : Réalisation de la conception MCD MLD
+2ème partie (mise en place) : Création des entities et des controllers
+3ème partie (controller) : Création du controller des sessions de sport (pour effectuer un CRUD)
+4ème partie (front) : Elaboration des pages des sessions avec les appels d'api
+5ème partie (mise en production) : Mise en production via l'hébergeur LWS avec filezilla
